@@ -1,0 +1,43 @@
+let state = 'idle';
+let user = null;
+let calculated = '1';
+
+const logCalc = () => { 
+    const isString = calculated === 'string' && !isNaN(calculated);
+    const calculatedAsNumber = isString ? parseInt(calculated) : parseFloat(calculated);
+    calculated = calculatedAsNumber + 1;
+};
+
+const calcUser = () => {
+    logCalc();
+    if (calculated > 2) {
+        user = 'John';
+    }
+    if (calculated > 2) {
+        state = 'requesting';
+    }
+    if (calculated > 3) {
+        state = 'idle';
+    }
+};
+
+const checkUser = () => {
+    if (user && state === 'requesting') {
+        console.log(`User: ${user} (${calculated})`);
+    }
+};
+
+checkUser();
+calcUser();
+
+checkUser();
+calcUser();
+
+checkUser();
+calcUser();
+
+checkUser();
+calcUser();
+
+checkUser();
+calcUser();
